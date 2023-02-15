@@ -1,6 +1,14 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
+const fs = require('fs');
+try{
+  fs.mkdirSync('./dist')
+} catch(error){}
+fs.copyFileSync('./src/_redirects', "./dist/_redirects")
+
+
+
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
