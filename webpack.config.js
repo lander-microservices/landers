@@ -46,7 +46,10 @@ module.exports = {
       remotes: {
         components: "components@https://calm-monstera-d723a6.netlify.app/remoteEntry.js"
       },
-      exposes: {},
+      exposes: {
+        "./Lander1":"./src/pages/lander1.jsx",
+        "./Lander2":"./src/pages/lander2.jsx",
+      },
       shared: {
         ...deps,
         react: {
