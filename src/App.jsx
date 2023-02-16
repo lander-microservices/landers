@@ -5,7 +5,6 @@ import Lander1 from "./pages/lander1"
 import "./index.css";
 
 const App = () => (
-    
   <>
     <Lander1 init={()=> {}} number="(800)888888" callClickCb={()=>{}} />
   </>
