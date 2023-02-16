@@ -12,7 +12,7 @@ fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://candid-pithivier-dd1f7e.netlify.app/",
+    publicPath: "http://localhost:8082/",
   },
 
   resolve: {
@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,

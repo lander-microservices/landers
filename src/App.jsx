@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "components/Header";
 
+import Lander1 from "./pages/lander1"
 import "./index.css";
 
 const App = () => (
-  <div className="container">
-    <Header />
-    <div>Name: lander</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
-  </div>
+    
+  <>
+    <Lander1 init={()=> {}} number="(800)888888" callClickCb={()=>{}} />
+  </>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
