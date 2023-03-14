@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HEADER_IMAGE from "./header-image-2.jpg"
 import './index.scss'
 
-export default function Lander1({ number, init, callClickCb }) {
+export default function Lander1({ number, init, callClickCb, voluumUrl }) {
   //   const init = () => {
   //     REDIRECT_AND_STORAGE_KEYS.forEach((obj) => {
   //       storeRgbaData(obj.ringbaKey, search.get(obj.redirectString));
@@ -127,7 +127,7 @@ export default function Lander1({ number, init, callClickCb }) {
                   <ul className="agegroup">
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         Below 64
@@ -135,7 +135,7 @@ export default function Lander1({ number, init, callClickCb }) {
                     </li>
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         65 - 70
@@ -143,7 +143,7 @@ export default function Lander1({ number, init, callClickCb }) {
                     </li>
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         71 - 75
@@ -151,7 +151,7 @@ export default function Lander1({ number, init, callClickCb }) {
                     </li>
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         76 - 80
@@ -159,7 +159,7 @@ export default function Lander1({ number, init, callClickCb }) {
                     </li>
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         81 - 85
@@ -167,7 +167,7 @@ export default function Lander1({ number, init, callClickCb }) {
                     </li>
                     <li>
                       <a
-                        href="https://track.qualifybenefits.co/click"
+                        href={voluumUrl}
                         id="landerclick"
                       >
                         86+
@@ -176,7 +176,7 @@ export default function Lander1({ number, init, callClickCb }) {
                   </ul>
                   <div className="link-href">
                     <a
-                      href="https://track.qualifybenefits.co/click"
+                      href={voluumUrl}
                       id="landerclick"
                     >
                       Maximize my Medicare Benefits
