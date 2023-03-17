@@ -142,8 +142,6 @@ export default function Lander1({ number, init, callClickCb, voluumUrl }) {
                           71 - 75
                         </a>
                       </p>
-                    </div>
-                    <div className="agegroup">
                       <p className="clicklander0">
                         <a href={voluumUrl} className="clicklander1">
                           76 - 80

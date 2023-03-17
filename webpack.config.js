@@ -1,13 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const fs = require('fs');
-try{
-  fs.mkdirSync('./dist')
-} catch(error){}
-fs.copyFileSync('./src/_redirects', "./dist/_redirects")
-
-
+const fs = require("fs");
+try {
+  fs.mkdirSync("./dist");
+} catch (error) {}
+fs.copyFileSync("./src/_redirects", "./dist/_redirects");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
@@ -48,7 +46,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
           },
         ],
       },
@@ -59,11 +57,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "lander",
       filename: "remoteEntry.js",
-      remotes: {
-      },
+      remotes: {},
       exposes: {
-        "./Lander1":"./src/pages/lander1",
-        "./Lander2":"./src/pages/lander2.jsx",
+        "./Lander1": "./src/pages/lander1",
+        "./Lander2": "./src/pages/lander2.jsx",
       },
       shared: {
         ...deps,

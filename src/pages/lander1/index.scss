@@ -677,16 +677,31 @@ footer {
   flex-direction: column;
 }
 .title-h1 {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0 15px;
   text-align: center;
 }
+
+@media (max-width: 800px) {
+  .title-h1 {
+    font-size: 23px;
+  }
+}
 .span-1 {
   background-color: #d01b34;
   color: #fff;
   padding: 0 1rem;
+}
+.yellowbox {
+  background-color: #ffe300;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.display-number {
+  color: #d01b34;
+  font-weight: 700;
 }
 
 .p1 {
@@ -694,7 +709,7 @@ footer {
   font-size: large;
 }
 .title-h2 {
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.3;
   margin: 0 0 15px;
   font-size: 26px;
@@ -704,32 +719,6 @@ footer {
   font-weight: 400;
   font-size: large;
   list-style-type: none;
-}
-
-.clicklander0 {
-  background: #274066;
-  cursor: pointer;
-  text-align: center;
-}
-.clicklander1 {
-  color: white;
-  display: block;
-  font-size: 22px;
-  font-weight: 500;
-  padding: 2%;
-  text-decoration: none;
-  width: 100%;
-}
-#agegroup {
-  background: #274066;
-  border-radius: 2px;
-  color: #fff !important;
-  display: block;
-  font-size: 22px;
-  font-weight: 500;
-  padding: 10px 0;
-  text-decoration: none;
-  width: 100%;
 }
 
 #clicklander12 {
@@ -743,12 +732,55 @@ footer {
   text-align: center;
 }
 
-.yellowbox {
-  background-color: #ffe300;
-  margin-bottom: 20px;
-  padding: 20px;
+@media (max-width: 400px) {
+  .clicklander12 {
+    font-size: 10px;
+  }
 }
-.display-number {
-  color: #d01b34;
-  font-weight: 700;
+.agegroup {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Two columns for larger screens */
+  grid-template-rows: repeat(2, 1fr); /* Three rows for smaller screens */
+  grid-gap: 7px; /* Add some space between the grid items */
+}
+
+.clicklander1 {
+  background: #274066;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  font-size: 1.2rem;
+  margin: 5px auto;
+  padding: 10px 35px;
+  text-align: center;
+}
+
+@media (max-width: 680px) {
+  .agegroup {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
+    grid-template-rows: repeat(3, 1fr); /* Three rows for smaller screens */
+    grid-gap: 15px; /* Add some space between the grid items */
+  }
+}
+
+@media (max-width: 485px) {
+  .agegroup {
+    list-style-type: none;
+    display: block;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px 35px;
+  }
+}
+
+@media (min-width: 321px) {
+  .container {
+    padding-right: 3%;
+    padding-left: 3%;
+  }
 }
