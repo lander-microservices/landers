@@ -213,8 +213,6 @@ p {
 
       .yellowbox {
         background-color: #ffe300;
-        padding: 20px;
-        margin-bottom: 20px;
 
         p {
           margin: 0;
@@ -697,7 +695,9 @@ footer {
 .yellowbox {
   background-color: #ffe300;
   margin-bottom: 20px;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
 }
 .display-number {
   color: #d01b34;
@@ -726,7 +726,7 @@ footer {
   border-radius: 3px;
   color: #fff;
   display: block;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 5px auto;
   padding: 10px 35px;
   text-align: center;
@@ -774,7 +774,6 @@ footer {
     color: #fff;
     margin-top: 15px;
     text-align: center;
-    padding: 10px 35px;
   }
 }
 
