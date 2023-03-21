@@ -20,7 +20,7 @@ export default function Lander1({ number, init, callClickCb, voluumUrl }) {
   }, []);
   return (
     <>
-      <div className="main" id="main">
+      <div className="main">
         <div className="section2">
           <div className="container">
             <div className="row">
