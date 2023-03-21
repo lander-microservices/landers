@@ -252,7 +252,7 @@ p {
         }
       }
 
-      .section2bottom {
+      .gridparent {
         h2 {
           text-align: center;
           font-size: 19px;
@@ -268,7 +268,7 @@ p {
           }
         }
 
-        .linkbox {
+        .gridchild {
           padding: 20px 0 30px;
 
           ul {
@@ -566,8 +566,8 @@ footer {
             }
           }
 
-          .section2bottom {
-            .linkbox {
+          .gridparent {
+            .gridchild {
               ul {
                 li {
                   width: 33%;
@@ -719,16 +719,19 @@ footer {
 }
 
 @media (max-width: 400px) {
-  .clicklander12 {
-    font-size: 10px;
+  .clicklander1 {
+    font-size: 5px;
   }
 }
-.agegroup {
+
+@media (max-width: 400px) {
+  .clicklander12 {
+    font-size: 10px;
+    padding: 0px 10px 0 10px;
+  }
+}
+.gridbtn {
   list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Two columns for larger screens */
-  grid-template-rows: repeat(2, 1fr); /* Three rows for smaller screens */
-  grid-gap: 7px; /* Add some space between the grid items */
 }
 
 .clicklander1 {
@@ -738,12 +741,11 @@ footer {
   display: block;
   font-size: 1.5rem;
   margin: 5px auto;
-  padding: 10px 35px;
   text-align: center;
 }
 
 @media (max-width: 680px) {
-  .agegroup {
+  .gridbtn {
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
@@ -753,7 +755,7 @@ footer {
 }
 
 @media (max-width: 485px) {
-  .agegroup {
+  .gridbtn {
     list-style-type: none;
     display: block;
     border-radius: 3px;

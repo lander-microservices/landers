@@ -123,10 +123,10 @@ export default function Lander1({ number, init, callClickCb, voluumUrl }) {
                   </p>
                 </div>
               </div>
-              <div className="section2bottom">
-                <div className="linkbox">
-                  <div id="">
-                    <div className="agegroup">
+              <div className="gridparent">
+                <div className="gridchild">
+                  <div>
+                    <div className="gridbtn">
                       <p className="clicklander0">
                         <a href={voluumUrl} className="clicklander1">
                           Below 64
