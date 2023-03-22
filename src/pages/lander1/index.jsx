@@ -21,152 +21,94 @@ export default function Lander1({ number, init, callClickCb, voluumUrl }) {
   return (
     <>
       <div className="main">
-        <div className="section2">
-          <div className="container">
-            <div className="row">
-              <div className="section2head">
-                <input
-                  type="hidden"
-                  name="click_id_store"
-                  id="click_id_store"
-                />
-                <h1 className="title-h1">
-                  Up To <span className="span-1">$5,100/Year</span> Grocery +
-                  Rent Allowance Could be Yours with Incredible New Medicare
-                  Plan
-                </h1>
+        <div className="container">
+          <div className="row">
+            <section className="section1">
+              <div className="headingimg">
+                <div className="heading1">
+                  <h1 className="heading">
+                    Up To <span className="span-1">$5,100/Year</span> Grocery +
+                    Rent Allowance Could be Yours with Incredible New Medicare
+                    Plan
+                  </h1>
+                </div>
+                <div className="headerimg">
+                  <img src={HEADER_IMAGE} alt="HEADER_IMAGE" />
+                </div>
               </div>
-              <div className="section2content">
-                <figure>
-                  <img src={HEADER_IMAGE} alt="" />
-                </figure>
-                <p className="p1">
-                  <strong>
+            </section>
+            <section className="section2">
+              <div className="parent-para">
+                <p className="child-para">
+                  <span className="span-2">
                     This Medicare benefit could give you up to $5,100 to spend
                     on groceries each year!
-                  </strong>
+                  </span>
                 </p>
-                <p className="p1">
+
+                <p className="child-para">
                   Is inflation making checkout at the grocery store a struggle?
                 </p>
-                <p className="p1">
-                  The <strong>Healthy Grocery Allowance</strong>, recently
-                  approved for people with Medicare Advantage plans, could give
-                  you up to $5,100/year to spend on the foods you need.
+                <p className="child-para">
+                  The <span className="span-2">Healthy Grocery Allowance,</span>{" "}
+                  recently approved for people with Medicare Advantage plans,
+                  could give you up to $5,100/year to spend on the foods you
+                  need.
                 </p>
-                <p className="p1">
+                <p className="child-para">
                   With costs at the store rapidly increasing, you can't afford
                   to miss out on this opportunity.
                 </p>
-                <p className="p1">
+                <p className="child-para">
                   You may also qualify for over-the-counter medicine allowances,
                   free meal deliveries, free rides to doctors appointments, and
                   more!
                 </p>
-                <p className="p1">
+                <p className="child-para">
                   Checking your eligibility is free, easy, and completely
                   confidential. Our agents are standing by, ready to help you
                   get the benefits you deserve!
                 </p>
-                <div className="yellowbox">
-                  <p className="p1">
-                    A Hotline opened to help Americans check if they qualify.
-                    The phone number is:{" "}
-                    <a
-                      href={`tel:${number}`}
-                      id="prelander_call"
-                      onClick={handleCallEventClick}
-                      className="callnow"
-                    >
-                      <span className="display-number">{number}</span>
-                    </a>
-                    .
-                  </p>
-                </div>
-                <p className="p1">
-                  The average wait time to talk with one of our agents is about{" "}
-                  <strong>2-3 minutes</strong>, so the Grocery Allowance benefit
-                  is getting a lot of people to call.
+                <p className="child-para-span-3">
+                  A Hotline opened to help Americans check if they qualify. The
+                  phone number is:{" "}
+                  <span className="span-3">(888) 305-2015.</span>
                 </p>
-                <p className="p1">
+                <p className="child-para">
+                  The average wait time to talk with one of our agents is about
+                  <span className="span-2"> 2-3 minutes,</span> so the Grocery
+                  Allowance benefit is getting a lot of people to call.
+                </p>
+                <p className="child-para">
                   When up to $5,100 per year is available, it makes sense that
                   it's so popular. You could also qualify for free rides to
                   doctor's appointments, drugstore allowances, free meal
                   deliveries, and even more! Our free, private, and confidential
                   hotline number is{" "}
-                  <a
-                    href={`tel:${number}`}
-                    id="prelander_call"
-                    className="callnow"
-                    onClick={handleCallEventClick}
-                  >
-                    <span className="display-number">{number}</span>
-                  </a>{" "}
-                  "Give us a call to see if you qualify!"
+                  <span className="span-4">(888) 305-2015 </span>"Give us a call
+                  to see if you qualify!"
                 </p>
-                <h2 className="title-h2">
-                  Check your Eligibility with these 3 Quick Steps:
-                </h2>
-                <div className="adv-list">
-                  <p className="adv-list1">
-                    <strong>Step 1: </strong> Click the corresponding box below
-                    to mark your age, or click "Maximize My Medicare Benefits"
-                  </p>
-                  <p className="adv-list1">
-                    <strong>Step 2:</strong> Fill out a short question form to
-                    see your available options (or call our number to
-                    immediately speak with one of our Professional Agents).
-                  </p>
-                  <p className="adv-list1">
-                    <strong>Step 3:</strong> Your new Medicare benefits are all
-                    yours!
-                  </p>
+              </div>
+            </section>
+
+            <section className="secion3">
+              <div></div>
+              <div className="btn-blues">
+                <ul className="btn-blue-parent">
+                  <li className="btn-blue-child">Below 64</li>
+                  <li className="btn-blue-child">65 - 70</li>
+                  <li className="btn-blue-child">71 - 75</li>
+                  <li className="btn-blue-child">76 - 80</li>
+                  <li className="btn-blue-child">81 - 85</li>
+                  <li className="btn-blue-child">86+</li>
+                </ul>
+              </div>
+              <div className="btn-red-parent">
+                <div className="btn-red-child">
+                  Get priority access to the medicare plans
                 </div>
               </div>
-              <div className="gridparent">
-                <div className="gridchild">
-                  <div>
-                    <div className="gridbtn">
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          Below 64
-                        </a>
-                      </p>
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          65 - 70
-                        </a>
-                      </p>
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          71 - 75
-                        </a>
-                      </p>
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          76 - 80
-                        </a>
-                      </p>
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          81 - 85
-                        </a>
-                      </p>
-                      <p className="clicklander0">
-                        <a href={voluumUrl} className="clicklander1">
-                          86+
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="link-href">
-                    <a href={voluumUrl} id="clicklander12">
-                      Maximize my Medicare Benefits
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </section>
           </div>
         </div>
       </div>
