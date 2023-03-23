@@ -1,9 +1,111 @@
+@media (min-width:992px) {
+  .row {
+    max-width: 64rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+.btn {
+  display: block;
+  border-radius: 0.125rem;
+  font-size: 1.375rem;
+  font-weight: 500;
+  padding: 0.625rem 0;
+  margin-bottom: 0.625rem;
+  text-align: center;
+}
 .lander-hero-section {
   padding-top: 2rem;
   .container {
     .row {
-      margin: 50px;
+      .lander-hero-content {
+        width: 100%;
+        h1 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+          line-height: 1.5;
+          strong {
+            padding: 0 1rem;
+          }
+          @media (min-width:768px) {
+            font-size: 2rem;
+          }
+          @media (min-width:992px) {
+            font-size: 3.125rem;
+          }
+        }
+        img {
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 }
-// .lander-hero-section .container .row {margin: 50px;}
+.lander-content-section {
+  .container {
+    .row {
+      .lander-content {
+        width: 100%;
+        p {
+          margin-bottom: 1rem;
+          &.highlight-box {
+            padding: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+.lander-cta-section {
+  padding-bottom: 2rem;
+  .container {
+    .row {
+      .lander-cta-content {
+        width: 100%;
+        h2 {
+          margin-bottom: 1rem;
+          font-size: 1.2rem;
+          @media (min-width:768px) {
+            font-size: 1.6rem;
+          }
+          @media (min-width:992px) {
+            font-size: 1.8rem;
+          }
+        }
+        .lander-steps {
+          p {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+      .cta-button-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        @media (min-width:768px) {
+          gap: 0.67rem;
+        }
+        @media (min-width:992px) {
+          gap: 0.67rem;
+        }
+        a {
+          flex: 0 0 auto;
+          width: 100%;
+          @media (min-width:768px) {
+            width: 49%;
+          }
+          @media (min-width:992px) {
+            width: 32%;
+          }
+        }
+      }
+      .cta-main-button {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
