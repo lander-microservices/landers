@@ -59,11 +59,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./Lander1": "./src/pages/lander1",
-        "./Lander2": "./src/pages/lander2",
-        "./Lander3": "./src/pages/lander3",
-        "./Lander4": "./src/pages/lander4",
-        "./Lander5": "./src/pages/lander5",
+        "./Lander1": "./src/pages/lander1"
       },
       shared: {
         ...deps,
