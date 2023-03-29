@@ -47,6 +47,11 @@
     .row {
       .lander-content {
         width: 100%;
+        &:global[class^="bg-"]{
+          p{
+            margin-bottom: 0;
+          }
+        }
         p {
           margin-bottom: 1rem;
           &.highlight-box {
@@ -108,4 +113,8 @@
       }
     }
   }
+}
+
+.lander-paragraph {
+  margin-bottom: 1.5rem;
 }
