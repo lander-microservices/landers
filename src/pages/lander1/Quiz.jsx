@@ -7,14 +7,14 @@ import "./quiz.scss";
 function QuestionTypeOptionRender({ content_block, addAnswer, fieldName }) {
   return (
     <div>
-      {content_block.map((question_block) => (
-        <div>
+      {content_block.map((question_block, index) => (
+        <div key={index}>
           <div>
             <h1>{question_block.question_option_headline}</h1>
           </div>
           <div>
-            {question_block.question_options_holder.map((options) => (
-              <button onClick={() => addAnswer(options.question_option_value)}>
+            {question_block.question_options_holder.map((options, index) => (
+              <button key={index} onClick={() => addAnswer(options.question_option_value)}>
                 <p>{options.question_option_name}</p>
               </button>
             ))}
@@ -170,6 +170,7 @@ export default function Quiz({ content_block }) {
       content_block.quiz_holder_section_zipcode_question_number !==
         questionId ? (
         <QuestionTypeOptionRender
+          key={Math.random()}
           addAnswer={addAnswer}
           content_block={questionObj.question_option}
         />

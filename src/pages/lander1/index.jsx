@@ -17,8 +17,9 @@ function LanderParagraphSection({ content_block, getRichText }) {
 function LanderCtaSection({ content_block, getRichText }) {
   return (
     <div className="cta-button-list col">
-      {(content_block.lander_cta_blocks || []).map((i) => (
+      {(content_block.lander_cta_blocks || []).map((i, index) => (
         <a
+          key={index}
           href={i.lander_cta_link.url}
           style={{ width: i.lander_cta_size }}
           className={`btn ${
@@ -39,6 +40,7 @@ export default function Lander1({
   callClickCb,
   voluumUrl,
   getRichText,
+  lander_bg_color,
 }) {
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
@@ -48,18 +50,23 @@ export default function Lander1({
     return newStr;
   };
 
-  const getParagraphComponent = (content) => {
+  const getParagraphComponent = (content, index) => {
     switch (content.component) {
       case "lander_paragraph_section":
         return (
           <LanderParagraphSection
+            key={index + "" + Math.random()}
             getRichText={getRichText}
             content_block={content}
           />
         );
       case "lander_cta_section":
         return (
-          <LanderCtaSection content_block={content} getRichText={getRichText} />
+          <LanderCtaSection
+            key={index}
+            content_block={content}
+            getRichText={getRichText}
+          />
         );
     }
   };
@@ -67,7 +74,13 @@ export default function Lander1({
   const { lander_paragraph_holder } = lander_paragraph;
   return (
     <>
-      <div className="lander-hero-section bg-skyblue">
+      <div
+        className={`lander-hero-section ${
+          lander_bg_color && lander_bg_color.length
+            ? lander_bg_color
+            : "bg-skyblue"
+        }`}
+      >
         <div className="container">
           <div className="row">
             <div className="lander-hero-content col">
@@ -97,7 +110,13 @@ export default function Lander1({
 
       {/* {(lander_paragraph_holder || []).map((i) => getParagraphComponent(i))} */}
 
-      <div className="lander-content-section bg-skyblue">
+      <div
+        className={`lander-content-section bg-skyblue ${
+          lander_bg_color && lander_bg_color.length
+            ? lander_bg_color
+            : "bg-skyblue"
+        }`}
+      >
         <div className="container">
           <div className="row">
             <div className="lander-content col">
@@ -107,29 +126,42 @@ export default function Lander1({
                     i.component !== "lander_cta_section" &&
                     i.component !== "quiz_holder_section"
                 )
-                .map((i) => getParagraphComponent(i))}
+                .map((i, index) => getParagraphComponent(i, index))}
             </div>
           </div>
         </div>
       </div>
-      <div className="lander-cta-section bg-skyblue">
+
+      <div
+        className={`lander-cta-section ${
+          lander_bg_color && lander_bg_color.length
+            ? lander_bg_color
+            : "bg-skyblue"
+        }`}
+      >
         <div className="container">
           <div className="row">
             {lander_paragraph_holder
               .filter((i) => i.component == "lander_cta_section")
-              .map((i) => getParagraphComponent(i))}
+              .map((i, index) => getParagraphComponent(i, index))}
           </div>
         </div>
       </div>
 
       {/* Quiz */}
-      <div className="lander-cta-section bg-skyblue">
+      <div
+        className={`lander-cta-section ${
+          lander_bg_color && lander_bg_color.length
+            ? lander_bg_color
+            : "bg-skyblue"
+        }`}
+      >
         <div className="container">
           <div className="row">
             {lander_paragraph_holder
               .filter((i) => i.component == "quiz_holder_section")
-              .map((i) => (
-                <Quiz content_block={i} />
+              .map((i, index) => (
+                <Quiz content_block={i} key={index} />
               ))}
           </div>
         </div>

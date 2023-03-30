@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const fs = require("fs");
 try {
   fs.mkdirSync("./dist");
-} catch (error) {}
+} catch (error) { }
 fs.copyFileSync("./src/_redirects", "./dist/_redirects");
 
 const deps = require("./package.json").dependencies;
@@ -50,6 +50,11 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      }
     ],
   },
 
