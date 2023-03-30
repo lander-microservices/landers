@@ -1,4 +1,5 @@
 import React from "react";
+import Quiz from "./Quiz";
 import "./index.scss";
 
 function LanderParagraphSection({ content_block, getRichText }) {
@@ -120,27 +121,20 @@ export default function Lander1({
           </div>
         </div>
       </div>
+
+      {/* Quiz */}
+      <div className="lander-cta-section bg-skyblue">
+        <div className="container">
+          <div className="row">
+            {lander_paragraph_holder
+              .filter((i) => i.component == "quiz_holder_section")
+              .map((i) => (
+                <Quiz content_block={i} />
+              ))}
+          </div>
+        </div>
+      </div>
+      {/* Quiz */}
     </>
   );
-}
-
-{
-  /* <div className="lander-cta-content col">
-<h2>Check your Eligibility with these 3 Quick Steps:</h2>
-<div className="lander-steps">
-  <p>
-    <strong>Step 1: </strong> Click the corresponding box below to
-    mark your age, or click "Maximize My Medicare Benefits"
-  </p>
-  <p>
-    <strong>Step 2:</strong> Fill out a short question form to see
-    your available options (or call our number to immediately
-    speak with one of our Professional Agents).
-  </p>
-  <p>
-    <strong>Step 3:</strong> Your new Medicare benefits are all
-    yours!
-  </p>
-</div>
-</div> */
 }
