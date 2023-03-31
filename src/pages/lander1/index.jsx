@@ -1,14 +1,18 @@
-import React from "react";
 import Quiz from "./Quiz";
+import React from "react";
+import shortCodeReplacer from "components/shortCodeReplacer";
 import "./index.scss";
 
-function LanderParagraphSection({ content_block, getRichText }) {
+function LanderParagraphSection({ number, content_block, getRichText }) {
   return (
     <div
       className={`lander-paragraph ${content_block.lander_paragraph_text_color} ${content_block.lander_paragraph_bg_color}`}
       style={{ padding: content_block.lander_paragraph_text_padding + "rem" }}
       dangerouslySetInnerHTML={{
-        __html: getRichText(content_block.lander_paragraph_text),
+        __html: shortCodeReplacer(
+          getRichText(content_block.lander_paragraph_text),
+          { number }
+        ),
       }}
     ></div>
   );
@@ -41,7 +45,9 @@ export default function Lander1({
   voluumUrl,
   getRichText,
   lander_bg_color,
+  number,
 }) {
+  console.log("Number", number);
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
       "<b>",
@@ -55,6 +61,7 @@ export default function Lander1({
       case "lander_paragraph_section":
         return (
           <LanderParagraphSection
+            number={number}
             key={index + "" + Math.random()}
             getRichText={getRichText}
             content_block={content}
@@ -64,6 +71,7 @@ export default function Lander1({
         return (
           <LanderCtaSection
             key={index}
+            number={number}
             content_block={content}
             getRichText={getRichText}
           />

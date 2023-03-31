@@ -62,7 +62,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "lander",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        components: "components@https://component-microservice.netlify.app/remoteEntry.js",
+      },
       exposes: {
         "./Lander1": "./src/pages/lander1"
       },

@@ -62,7 +62,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "lander",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        components: "components@http://localhost:8084/remoteEntry.js",
+      },
       exposes: {
         "./Lander1": "./src/pages/lander1"
       },
