@@ -93,50 +93,54 @@ export default function ZipCodeForm({ PropagateLoader, addAnswer }) {
 
   return (
     <>
-      <div className="formHolder">
-        <div className="form row-gap-30 flex-d-col">
-          <div className="form-card-holder flex-a-cen-j-cen row-gap-30 flex-d-col">
-            <div className="form-ques-card row-gap-30">
-              <div className="form-options row-gap-30 flex-d-col">
+      <div className="question_container">
+        <div className="questions">
+          <div className="question_headline">
+              <h2>What's your zipcode?</h2>
+            </div>
+            <div className="question_holder">
+              <div className="question_input">
                 <form onSubmit={handleSubmit}>
-                  <input
-                    value={values.zip}
-                    required
-                    onChange={onChangeZipValue}
-                    onBlur={handleBlur}
-                    maxLength={5}
-                    max={99999}
-                    type="number"
-                    name="zip"
-                    id="zip"
-                    placeholder="Zip Code"
-                  />
-                  {errors.zip && touched.zip ? (
-                    <div className="form-error font-12 form-error-2">
-                      &nbsp;&nbsp; {errors.zip}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  <button
-                    disabled={errors.zip}
-                    type="submit"
-                    className="form-button form-option-continue color-white font-20 bold"
-                  >
-                    {loading ? (
-                      <>
-                        <p className="visibility-hidden">.</p>{" "}
-                      </>
+                    <input
+                      value={values.zip}
+                      required
+                      onChange={onChangeZipValue}
+                      onBlur={handleBlur}
+                      maxLength={5}
+                      max={99999}
+                      type="text" 
+                      inputMode="numeric" 
+                      pattern="[0-9]*"
+                      name="zip"
+                      id="zip"
+                      placeholder="Zip Code"
+                      className="custominput"
+                    />
+                    {errors.zip && touched.zip ? (
+                      <div className="form-error font-12 form-error-2">
+                        &nbsp;&nbsp; {errors.zip}
+                      </div>
                     ) : (
-                      <>Continue</>
+                      ""
                     )}
-                  </button>
+                    <button
+                      disabled={errors.zip}
+                      type="submit"
+                      className="white bg-red"
+                    >
+                      {loading ? (
+                        <>
+                          <p className="visibility-hidden">.</p>{" "}
+                        </>
+                      ) : (
+                        <>Continue</>
+                      )}
+                    </button>
                 </form>
               </div>
             </div>
+            </div>
           </div>
-        </div>
-      </div>
     </>
   );
 }

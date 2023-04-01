@@ -6,18 +6,20 @@ import "./quiz.scss";
 //  option question
 function QuestionTypeOptionRender({ content_block, addAnswer, fieldName }) {
   return (
-    <div>
+    <div className="question_container">
       {content_block.map((question_block, index) => (
-        <div key={index}>
-          <div>
-            <h1>{question_block.question_option_headline}</h1>
+        <div className="questions" key={index}>
+          <div className="question_headline">
+            <h2>{question_block.question_option_headline}</h2>
           </div>
-          <div>
-            {question_block.question_options_holder.map((options, index) => (
-              <button key={index} onClick={() => addAnswer(options.question_option_value)}>
-                <p>{options.question_option_name}</p>
-              </button>
-            ))}
+          <div className="question_holder">
+            <div className="question_options">
+              {question_block.question_options_holder.map((options, index) => (
+                <button key={index} onClick={() => addAnswer(options.question_option_value)} className="white bg-red">
+                  <p>{options.question_option_name}</p>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       ))}
@@ -164,7 +166,7 @@ export default function Quiz({ content_block }) {
 
   const submitBooleans = !showQualifyDisqualify && !isSubmitLoaderVisible;
   return (
-    <div className="quiz">
+    <div className="quiz col">
       {submitBooleans &&
       questionObj &&
       content_block.quiz_holder_section_zipcode_question_number !==
