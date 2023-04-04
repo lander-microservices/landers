@@ -78,11 +78,13 @@ function Qualifyed() {
   );
 }
 
-export default function Quiz({ content_block }) {
+export default function Quiz({ content_block, PropagateLoader }) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
   const [showQualifyDisqualify, setShowQualifyDisqualify] = useState(false);
+
+  console.log('Quiz Content Block', content_block);
 
   const findQuestion = (question_id) =>
     content_block.quiz_holder_questions.find(
@@ -182,7 +184,7 @@ export default function Quiz({ content_block }) {
       content_block.quiz_holder_section_zipcode === "yes" &&
       content_block.quiz_holder_section_zipcode_question_number ===
         questionId ? (
-        <ZipCodeForm addAnswer={addAnswer} />
+        <ZipCodeForm addAnswer={addAnswer} PropagateLoader={PropagateLoader} />
       ) : undefined}
 
       {isSubmitLoaderVisible ? (

@@ -130,6 +130,7 @@ export default function ZipCodeForm({ PropagateLoader, addAnswer }) {
                     >
                       {loading ? (
                         <>
+                        <PropagateLoader loading={loading} />
                           <p className="visibility-hidden">.</p>{" "}
                         </>
                       ) : (

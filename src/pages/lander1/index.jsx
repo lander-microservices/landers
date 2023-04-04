@@ -46,6 +46,7 @@ export default function Lander1({
   getRichText,
   lander_bg_color,
   number,
+  PropagateLoader
 }) {
   console.log("Number", number);
   const addColorToRichText = (html) => {
@@ -169,7 +170,7 @@ export default function Lander1({
             {lander_paragraph_holder
               .filter((i) => i.component == "quiz_holder_section")
               .map((i, index) => (
-                <Quiz content_block={i} key={index} />
+                <Quiz content_block={i} key={index} PropagateLoader={PropagateLoader} />
               ))}
           </div>
         </div>
