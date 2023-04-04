@@ -48,7 +48,6 @@ export default function Lander1({
   number,
   PropagateLoader
 }) {
-  console.log("Number", number);
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
       "<b>",

@@ -84,8 +84,6 @@ export default function Quiz({ content_block, PropagateLoader }) {
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
   const [showQualifyDisqualify, setShowQualifyDisqualify] = useState(false);
 
-  console.log('Quiz Content Block', content_block);
-
   const findQuestion = (question_id) =>
     content_block.quiz_holder_questions.find(
       (i) => i.question_id === question_id
