@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ZipCodeForm from "./ZipCodeForm";
 import "./quiz.scss";
 
@@ -68,17 +68,78 @@ function DisQualified() {
   );
 }
 
-function Qualifyed() {
+function Qualifyed({ number }) {
   return (
     <div>
       <div>
-        <h1>Qualified</h1>
+        <h1>Congratulations!</h1>
+      </div>
+      <div></div>
+      <div>
+        <p>Your spot is being held. To get started click the button below to speak to a expert.</p>
+      </div>
+      <div>
+        <a href={`tel:${number}`}>{number}</a>
+      </div>
+      <div>
+        <p>Your spot is being held for <Timer /></p>
       </div>
     </div>
   );
 }
 
-export default function Quiz({ content_block, PropagateLoader }) {
+const Timer = () => {
+  const Ref = useRef(null);
+  const [timer, setTimer] = useState("00:00");
+
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    // const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    return {
+      total,
+      minutes,
+      seconds,
+    };
+  };
+
+  const startTimer = (e) => {
+    let { total, minutes, seconds } = getTimeRemaining(e);
+    if (total >= 0) {
+      setTimer(
+        (minutes > 9 ? minutes : "0" + minutes) +
+          ":" +
+          (seconds > 9 ? seconds : "0" + seconds)
+      );
+    }
+  };
+
+  const clearTimer = (e) => {
+    setTimer("00:10");
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+      startTimer(e);
+    }, 1000);
+    Ref.current = id;
+  };
+
+  const getDeadTime = () => {
+    let deadline = new Date();
+    deadline.setSeconds(deadline.getSeconds() + 290);
+    return deadline;
+  };
+  useEffect(() => {
+    clearTimer(getDeadTime());
+  }, []);
+  const onClickReset = () => {
+    clearTimer(getDeadTime());
+  };
+
+  return <span>{timer}</span>;
+};
+
+export default function Quiz({ content_block, number, PropagateLoader }) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -190,11 +251,11 @@ export default function Quiz({ content_block, PropagateLoader }) {
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === true ? (
-        <Qualifyed />
+        <Qualifyed number={number} />
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === false ? (
-        <DisQualified />
+        <DisQualified number={number} />
       ) : undefined}
     </div>
   );

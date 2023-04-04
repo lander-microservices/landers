@@ -169,7 +169,7 @@ export default function Lander1({
             {lander_paragraph_holder
               .filter((i) => i.component == "quiz_holder_section")
               .map((i, index) => (
-                <Quiz content_block={i} key={index} PropagateLoader={PropagateLoader} />
+                <Quiz content_block={i} key={index} PropagateLoader={PropagateLoader} number={number} />
               ))}
           </div>
         </div>
