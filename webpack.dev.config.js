@@ -54,7 +54,18 @@ module.exports = {
         test: /\.js$/,
         enforce: 'pre',
         use: ['source-map-loader'],
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "svg-url-loader",
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
     ],
   },
 
@@ -66,7 +77,10 @@ module.exports = {
         components: "components@http://localhost:8084/remoteEntry.js",
       },
       exposes: {
-        "./Lander1": "./src/pages/lander1"
+        "./Lander1": "./src/pages/lander1",
+        "./V1Lander": "./src/pages/v1/lander",
+        "./V1Footer": "./src/pages/v1/footer",
+        "./V1Header": "./src/pages/v1/header"
       },
       shared: {
         ...deps,
