@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import ZipCodeForm from "./ZipCodeForm";
 import "./quiz.scss";
 
-
 //  option question
 function QuestionTypeOptionRender({ content_block, addAnswer, fieldName }) {
   return (
@@ -15,7 +14,11 @@ function QuestionTypeOptionRender({ content_block, addAnswer, fieldName }) {
           <div className="question_holder">
             <div className="question_options">
               {question_block.question_options_holder.map((options, index) => (
-                <button key={index} onClick={() => addAnswer(options.question_option_value)} className="white bg-red">
+                <button
+                  key={index}
+                  onClick={() => addAnswer(options.question_option_value)}
+                  className="white bg-red"
+                >
                   <p>{options.question_option_name}</p>
                 </button>
               ))}
@@ -48,17 +51,19 @@ function QuestionSubmitLoader({ changeSubmitLoader }) {
   }, []);
 
   return (
-    <div>
-      <p>{texts[currentIndex]}</p>
+    <div className="loading">
+      <h4>{texts[currentIndex]}</h4>
     </div>
   );
 }
 
 function DisQualified() {
   return (
-    <div>
+    <div className="disqualified">
       <div>
-        <h1>Sorry, we can't help you.</h1>
+        <p class="greatnews">
+          <strong>Sorry, we can't help you.</strong>
+        </p>
         <p>
           The questions you answered have helped us determine that we are not
           able to help you at this time.
@@ -70,19 +75,22 @@ function DisQualified() {
 
 function Qualifyed({ number }) {
   return (
-    <div>
-      <div>
-        <h1>Congratulations!</h1>
-      </div>
-      <div></div>
-      <div>
-        <p>Your spot is being held. To get started click the button below to speak to a expert.</p>
-      </div>
-      <div>
+    <div className="qualifyed">
+      <div className="greatnews">
+        <h5>Congratulations!</h5>
+        <p>
+          You Pre-Qualify for Advanced Premium Credits{" "}
+          <span className="red"> Advanced Premium Credits </span>
+          in your area up to $1400 a month
+        </p>
+        <p>
+          Your spot is being held. To get started click the button below to
+          speak to a expert.
+        </p>
         <a href={`tel:${number}`}>{number}</a>
-      </div>
-      <div>
-        <p>Your spot is being held for <Timer /></p>
+        <h3>
+          Your spot is being held for <Timer />
+        </h3>
       </div>
     </div>
   );
