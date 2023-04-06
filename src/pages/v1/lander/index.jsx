@@ -80,7 +80,6 @@ export default function Lander1({
   };
 
   const { lander_paragraph_holder } = lander_paragraph;
-  console.log("Lander Paragraph holder", lander_paragraph_holder);
   return (
     <>
       <div

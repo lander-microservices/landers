@@ -11,7 +11,6 @@ function QuestionTypeOptionRender({
   question_options_bg_color,
   question_options_color,
 }) {
-  console.log("Question", content_block);
   return (
     <div className="question_container">
       {content_block.map((question_block, index) => (
@@ -170,7 +169,6 @@ const Timer = () => {
 };
 
 export default function Quiz({ content_block, number, PropagateLoader }) {
-  console.log("Content Block", content_block);
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
