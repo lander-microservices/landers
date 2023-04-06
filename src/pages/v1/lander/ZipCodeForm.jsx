@@ -16,7 +16,14 @@ const validationSchema = yup.object({
     .max(5, "Zip code should be of 5 digit."),
 });
 
-export default function ZipCodeForm({ PropagateLoader, addAnswer }) {
+export default function ZipCodeForm({
+  quiz_loader_color,
+  PropagateLoader,
+  addAnswer,
+  question_options_color,
+  question_headline_color,
+  question_options_bg_color,
+}) {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState({});
 
@@ -95,53 +102,62 @@ export default function ZipCodeForm({ PropagateLoader, addAnswer }) {
     <>
       <div className="question_container">
         <div className="questions">
-          <div className="question_headline">
-              <h2>What's your zipcode?</h2>
-            </div>
-            <div className="question_holder">
-              <div className="question_input">
-                <form onSubmit={handleSubmit}>
-                    <input
-                      value={values.zip}
-                      required
-                      onChange={onChangeZipValue}
-                      onBlur={handleBlur}
-                      maxLength={5}
-                      max={99999}
-                      type="text" 
-                      inputMode="numeric" 
-                      pattern="[0-9]*"
-                      name="zip"
-                      id="zip"
-                      placeholder="Zip Code"
-                      className="custominput"
-                    />
-                    {errors.zip && touched.zip ? (
-                      <div className="form-error font-12 form-error-2">
-                        &nbsp;&nbsp; {errors.zip}
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    <button
-                      disabled={errors.zip}
-                      type="submit"
-                      className="white bg-red"
-                    >
-                      {loading ? (
-                        <>
-                        <PropagateLoader loading={loading} />
-                          <p className="visibility-hidden">.</p>{" "}
-                        </>
-                      ) : (
-                        <>Continue</>
-                      )}
-                    </button>
-                </form>
-              </div>
-            </div>
+          <div className={`question_headline ${question_headline_color}`}>
+            <h2>What's your zipcode?</h2>
+          </div>
+          <div className="question_holder">
+            <div className="question_input">
+              <form onSubmit={handleSubmit}>
+                <input
+                  value={values.zip}
+                  required
+                  onChange={onChangeZipValue}
+                  onBlur={handleBlur}
+                  maxLength={5}
+                  max={99999}
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  name="zip"
+                  id="zip"
+                  placeholder="Zip Code"
+                  className="custominput"
+                />
+                {errors.zip && touched.zip ? (
+                  <div className="form-error font-12 form-error-2">
+                    &nbsp;&nbsp; {errors.zip}
+                  </div>
+                ) : (
+                  ""
+                )}
+                <button
+                  disabled={errors.zip}
+                  type="submit"
+                  className={` ${
+                    question_options_color && question_options_color.length
+                      ? question_options_color
+                      : "white"
+                  } ${
+                    question_options_bg_color &&
+                    question_options_bg_color.length
+                      ? question_options_bg_color
+                      : "bg-red"
+                  }`}
+                >
+                  {loading ? (
+                    <>
+                      <PropagateLoader loading={true} />
+                      <p className="visibility-hidden">.</p>{" "}
+                    </>
+                  ) : (
+                    <>Continue</>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -3,24 +3,46 @@ import ZipCodeForm from "./ZipCodeForm";
 import "./quiz.scss";
 
 //  option question
-function QuestionTypeOptionRender({ content_block, addAnswer, fieldName }) {
+function QuestionTypeOptionRender({
+  content_block,
+  addAnswer,
+  fieldName,
+  question_headline_color,
+  question_options_bg_color,
+  question_options_color,
+}) {
+  console.log("Question", content_block);
   return (
     <div className="question_container">
       {content_block.map((question_block, index) => (
         <div className="questions" key={index}>
-          <div className="question_headline">
-            <h2>{question_block.question_option_headline}</h2>
+          <div className={`question_headline ${question_headline_color}`}>
+            <h2>
+              {question_block.question_option_headline}{" "}
+              {question_headline_color}
+            </h2>
           </div>
           <div className="question_holder">
             <div className="question_options">
               {question_block.question_options_holder.map((options, index) => (
-                <button
-                  key={index}
-                  onClick={() => addAnswer(options.question_option_value)}
-                  className="white bg-red"
-                >
-                  <p>{options.question_option_name}</p>
-                </button>
+                <>
+                  <button
+                    key={index}
+                    onClick={() => addAnswer(options.question_option_value)}
+                    className={`${
+                      question_options_bg_color &&
+                      question_options_bg_color.length
+                        ? question_options_bg_color
+                        : "bg-red"
+                    } ${
+                      question_options_color && question_options_color.length
+                        ? question_options_color
+                        : "white"
+                    }`}
+                  >
+                    <p>{options.question_option_name}</p>
+                  </button>
+                </>
               ))}
             </div>
           </div>
@@ -148,6 +170,7 @@ const Timer = () => {
 };
 
 export default function Quiz({ content_block, number, PropagateLoader }) {
+  console.log("Content Block", content_block);
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -244,6 +267,9 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
           key={Math.random()}
           addAnswer={addAnswer}
           content_block={questionObj.question_option}
+          question_options_color={questionObj.question_options_color}
+          question_headline_color={questionObj.question_headline_color}
+          question_options_bg_color={questionObj.question_options_bg_color}
         />
       ) : undefined}
 
@@ -251,7 +277,14 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
       content_block.quiz_holder_section_zipcode === "yes" &&
       content_block.quiz_holder_section_zipcode_question_number ===
         questionId ? (
-        <ZipCodeForm addAnswer={addAnswer} PropagateLoader={PropagateLoader} />
+        <ZipCodeForm
+          quiz_loader_color={content_block.quiz_loader_color}
+          addAnswer={addAnswer}
+          question_options_color={findQuestion("1").question_options_color}
+          question_headline_color={findQuestion("1").question_headline_color}
+          question_options_bg_color={findQuestion("1").question_options_bg_color}
+          PropagateLoader={PropagateLoader}
+        />
       ) : undefined}
 
       {isSubmitLoaderVisible ? (
