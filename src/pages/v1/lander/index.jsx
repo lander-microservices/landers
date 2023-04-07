@@ -36,7 +36,7 @@ function LanderCtaSection({ content_block, getRichText }) {
   );
 }
 
-export default function Lander1({
+export default function Lander({
   lander_paragraph,
   lander_hero_section,
   init,
@@ -45,7 +45,9 @@ export default function Lander1({
   getRichText,
   lander_bg_color,
   number,
-  PropagateLoader
+  PropagateLoader,
+  lander_show_cta_section,
+  lander_show_quiz_section,
 }) {
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
@@ -139,40 +141,49 @@ export default function Lander1({
         </div>
       </div>
 
-      <div
-        className={`lander-cta-section ${
-          lander_bg_color && lander_bg_color.length
-            ? lander_bg_color
-            : "bg-skyblue"
-        }`}
-      >
-        <div className="container">
-          <div className="row">
-            {lander_paragraph_holder
-              .filter((i) => i.component == "lander_cta_section")
-              .map((i, index) => getParagraphComponent(i, index))}
+      {lander_show_cta_section.toLowerCasee() === "yes" ? (
+        <div
+          className={`lander-cta-section ${
+            lander_bg_color && lander_bg_color.length
+              ? lander_bg_color
+              : "bg-skyblue"
+          }`}
+        >
+          <div className="container">
+            <div className="row">
+              {lander_paragraph_holder
+                .filter((i) => i.component == "lander_cta_section")
+                .map((i, index) => getParagraphComponent(i, index))}
+            </div>
           </div>
         </div>
-      </div>
+      ) : undefined}
 
       {/* Quiz */}
-      <div
-        className={`lander-cta-section ${
-          lander_bg_color && lander_bg_color.length
-            ? lander_bg_color
-            : "bg-skyblue"
-        }`}
-      >
-        <div className="container">
-          <div className="row">
-            {lander_paragraph_holder
-              .filter((i) => i.component == "quiz_holder_section")
-              .map((i, index) => (
-                <Quiz content_block={i} key={index} PropagateLoader={PropagateLoader} number={number} />
-              ))}
+      {lander_show_quiz_section.toLowerCase() === "yes" ? (
+        <div
+          className={`lander-cta-section ${
+            lander_bg_color && lander_bg_color.length
+              ? lander_bg_color
+              : "bg-skyblue"
+          }`}
+        >
+          <div className="container">
+            <div className="row">
+              {lander_paragraph_holder
+                .filter((i) => i.component == "quiz_holder_section")
+                .map((i, index) => (
+                  <Quiz
+                    content_block={i}
+                    key={index}
+                    PropagateLoader={PropagateLoader}
+                    number={number}
+                  />
+                ))}
+            </div>
           </div>
         </div>
-      </div>
+      ) : undefined}
       {/* Quiz */}
     </>
   );
