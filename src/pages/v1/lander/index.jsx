@@ -120,7 +120,7 @@ export default function Lander({
       {/* {(lander_paragraph_holder || []).map((i) => getParagraphComponent(i))} */}
 
       <div
-        className={`lander-content-section bg-skyblue ${
+        className={`lander-content-section ${
           lander_bg_color && lander_bg_color.length
             ? lander_bg_color
             : "bg-skyblue"
