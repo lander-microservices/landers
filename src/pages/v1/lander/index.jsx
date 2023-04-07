@@ -25,8 +25,7 @@ function LanderCtaSection({ content_block, getRichText }) {
         <a
           key={index}
           href={i.lander_cta_link.url}
-          style={{ width: i.lander_cta_size }}
-          className={`btn ${
+          className={`btn ${i.lander_cta_size}  ${
             i.lander_cta_color ? i.lander_cta_color : "white"
           } ${i.lander_cta_bg_color ? i.lander_cta_bg_color : "bg-blue"}`}
         >
