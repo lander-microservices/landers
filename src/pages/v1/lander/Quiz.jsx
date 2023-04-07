@@ -14,7 +14,7 @@ function QuestionTypeOptionRender({
   return (
     <div className="question_container">
       {content_block.map((question_block, index) => (
-        <div className="questions" key={index}>
+        <div className="questions" key={index  + "P"}>
           <div className={`question_headline ${question_headline_color}`}>
             <h2>
               {question_block.question_option_headline}{" "}
@@ -24,9 +24,8 @@ function QuestionTypeOptionRender({
           <div className="question_holder">
             <div className="question_options">
               {question_block.question_options_holder.map((options, index) => (
-                <>
                   <button
-                    key={index}
+                    key={index + "I"}
                     onClick={() => addAnswer(options.question_option_value)}
                     className={`${
                       question_options_bg_color &&
@@ -41,7 +40,6 @@ function QuestionTypeOptionRender({
                   >
                     <p>{options.question_option_name}</p>
                   </button>
-                </>
               ))}
             </div>
           </div>

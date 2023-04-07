@@ -141,7 +141,7 @@ export default function Lander({
         </div>
       </div>
 
-      {lander_show_cta_section.toLowerCasee() === "yes" ? (
+      {lander_show_cta_section.toLowerCase() === "yes" ? (
         <div
           className={`lander-cta-section ${
             lander_bg_color && lander_bg_color.length
