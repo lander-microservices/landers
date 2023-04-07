@@ -167,6 +167,7 @@ const Timer = () => {
 };
 
 export default function Quiz({ content_block, number, PropagateLoader }) {
+  console.log("content_block", content_block)
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -263,9 +264,9 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
           key={Math.random()}
           addAnswer={addAnswer}
           content_block={questionObj.question_option}
-          question_options_color={questionObj.question_options_color}
-          question_headline_color={questionObj.question_headline_color}
-          question_options_bg_color={questionObj.question_options_bg_color}
+          question_options_color={content_block.question_options_text_color}
+          question_headline_color={content_block.question_headline_color}
+          question_options_bg_color={content_block.question_options_bg_color}
         />
       ) : undefined}
 
@@ -276,9 +277,9 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
         <ZipCodeForm
           quiz_loader_color={content_block.quiz_loader_color}
           addAnswer={addAnswer}
-          question_options_color={findQuestion("1").question_options_color}
-          question_headline_color={findQuestion("1").question_headline_color}
-          question_options_bg_color={findQuestion("1").question_options_bg_color}
+          question_options_color={content_block.question_options_text_color}
+          question_headline_color={content_block.question_headline_color}
+          question_options_bg_color={content_block.question_options_bg_color}
           PropagateLoader={PropagateLoader}
         />
       ) : undefined}
