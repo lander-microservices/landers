@@ -33,7 +33,7 @@ export default function Header({
           {tollFreeVisible === "true" ? (
             <a
               href={`tel:${number}`}
-              className="callnow blue"
+              className="callnow blue navbar-btn"
               onClick={()=> handlePixelEventTrigger('Contact')}
               id="lander_call"
             >

@@ -108,7 +108,7 @@ function Qualifyed({ number }) {
           Your spot is being held. To get started click the button below to
           speak to a expert.
         </p>
-        <a href={`tel:${number}`}>{number}</a>
+        <a href={`tel:${number}`} className="quiz-navbar-btn">{number}</a>
         <h3>
           Your spot is being held for <Timer />
         </h3>
