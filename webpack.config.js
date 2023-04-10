@@ -78,6 +78,7 @@ module.exports = {
         components: "components@https://component-microservice.netlify.app/remoteEntry.js",
       },
       exposes: {
+        "./GlobalScss": "./src/globalCss.scss",
         "./V1Lander": "./src/pages/v1/lander",
         "./V1Footer": "./src/pages/v1/footer",
         "./V1Header": "./src/pages/v1/header",
