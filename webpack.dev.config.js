@@ -80,7 +80,8 @@ module.exports = {
       exposes: {
         "./V1Lander": "./src/pages/v1/lander",
         "./V1Footer": "./src/pages/v1/footer",
-        "./V1Header": "./src/pages/v1/header"
+        "./V1Header": "./src/pages/v1/header",
+        "./V1Advertorial": "./src/pages/v1/advertorial"
       },
       shared: {
         ...deps,
