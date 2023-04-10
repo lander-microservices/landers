@@ -167,7 +167,6 @@ const Timer = () => {
 };
 
 export default function Quiz({ content_block, number, PropagateLoader }) {
-  console.log("content_block", content_block)
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
