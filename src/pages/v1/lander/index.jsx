@@ -1,9 +1,8 @@
 import Quiz from "./Quiz";
 import React from "react";
-import shortCodeReplacer from "components/shortCodeReplacer";
 import "./index.scss";
 
-function LanderParagraphSection({ number, content_block, getRichText }) {
+function LanderParagraphSection({ number,shortCodeReplacer, content_block, getRichText }) {
   return (
     <div
       className={`lander-paragraph ${content_block.lander_paragraph_text_color} ${content_block.lander_paragraph_bg_color}`}
@@ -48,6 +47,7 @@ export default function Lander({
   PropagateLoader,
   lander_show_cta_section,
   lander_show_quiz_section,
+  shortCodeReplacer
 }) {
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
@@ -63,6 +63,7 @@ export default function Lander({
         return (
           <LanderParagraphSection
             number={number}
+            shortCodeReplacer={shortCodeReplacer}
             key={index + "" + Math.random()}
             getRichText={getRichText}
             content_block={content}
