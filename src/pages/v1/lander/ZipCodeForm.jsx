@@ -23,6 +23,8 @@ export default function ZipCodeForm({
   question_options_color,
   question_headline_color,
   question_options_bg_color,
+  RINGBA_STORAGE_KEYS,
+  storeRgbaData
 }) {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState({});
@@ -43,7 +45,7 @@ export default function ZipCodeForm({
       if (!loading) {
         // sessionStorage.setItem(sessionStorageKeys.zip, String(values.zip));
         incZipFormState(values.zip);
-        // storeRgbaData("zip", values.zip);
+        storeRgbaData(RINGBA_STORAGE_KEYS.zip, values.zip);
       }
     },
   });
@@ -67,11 +69,11 @@ export default function ZipCodeForm({
           city: response.data["places"][0]["place name"],
           state: response.data["places"][0]["state abbreviation"],
         });
-        // storeRgbaData("city", response.data["places"][0]["place name"]);
-        // storeRgbaData(
-        //   "state",
-        //   response.data["places"][0]["state abbreviation"]
-        // );
+        storeRgbaData(RINGBA_STORAGE_KEYS.city, response.data["places"][0]["place name"]);
+        storeRgbaData(
+          RINGBA_STORAGE_KEYS.state,
+          response.data["places"][0]["state abbreviation"]
+        );
 
         addAnswer({
           zip,

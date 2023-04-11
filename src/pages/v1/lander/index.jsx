@@ -1,5 +1,6 @@
 import Quiz from "./Quiz";
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import "./index.scss";
 
 function LanderParagraphSection({ number,shortCodeReplacer, content_block, getRichText }) {
@@ -47,8 +48,11 @@ export default function Lander({
   PropagateLoader,
   lander_show_cta_section,
   lander_show_quiz_section,
-  shortCodeReplacer
+  shortCodeReplacer,
+  storeRgbaData,
+  RINGBA_STORAGE_KEYS
 }) {
+
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
       "<b>",
@@ -177,6 +181,8 @@ export default function Lander({
                   <Quiz
                     content_block={i}
                     key={index}
+                    RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
+                    storeRgbaData={storeRgbaData}
                     PropagateLoader={PropagateLoader}
                     number={number}
                   />

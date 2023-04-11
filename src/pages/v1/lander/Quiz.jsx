@@ -10,15 +10,19 @@ function QuestionTypeOptionRender({
   question_headline_color,
   question_options_bg_color,
   question_options_color,
+  storeRgbaData
 }) {
+
+  const saveData = (key, value) =>{
+    storeRgbaData(key, value);
+  }
   return (
     <div className="question_container">
       {content_block.map((question_block, index) => (
         <div className="questions" key={index  + "P"}>
           <div className={`question_headline ${question_headline_color}`}>
             <h2>
-              {question_block.question_option_headline}{" "}
-              {question_headline_color}
+              {question_block.question_option_headline}
             </h2>
           </div>
           <div className="question_holder">
@@ -26,7 +30,11 @@ function QuestionTypeOptionRender({
               {question_block.question_options_holder.map((options, index) => (
                   <button
                     key={index + "I"}
-                    onClick={() => addAnswer(options.question_option_value)}
+                    onClick={() =>{
+                      addAnswer(options.question_option_value)
+                      saveData(question_block.question_key_name, options.question_option_value)
+                    } 
+                  }
                     className={`${
                       question_options_bg_color &&
                       question_options_bg_color.length
@@ -80,7 +88,7 @@ function DisQualified() {
   return (
     <div className="disqualified">
       <div>
-        <p class="greatnews">
+        <p className="greatnews">
           <strong>Sorry, we can't help you.</strong>
         </p>
         <p>
@@ -166,7 +174,7 @@ const Timer = () => {
   return <span>{timer}</span>;
 };
 
-export default function Quiz({ content_block, number, PropagateLoader }) {
+export default function Quiz({ content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -248,7 +256,17 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
     return eligible;
   };
 
-  useEffect(() => {}, []);
+  const saveInitialData = () =>{
+    content_block.quiz_holder_questions.forEach((i)=>{
+      i.question_option.forEach((question)=> {
+        storeRgbaData(question.question_key_name ,question.question_option_default_value)
+      })
+    })
+  }
+
+  useEffect(() => {
+    saveInitialData()
+  }, []);
 
   const questionObj = findQuestion(questionId);
 
@@ -262,6 +280,7 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
         <QuestionTypeOptionRender
           key={Math.random()}
           addAnswer={addAnswer}
+          storeRgbaData={storeRgbaData}
           content_block={questionObj.question_option}
           question_options_color={content_block.question_options_text_color}
           question_headline_color={content_block.question_headline_color}
@@ -276,6 +295,8 @@ export default function Quiz({ content_block, number, PropagateLoader }) {
         <ZipCodeForm
           quiz_loader_color={content_block.quiz_loader_color}
           addAnswer={addAnswer}
+          storeRgbaData={storeRgbaData}
+          RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
           question_options_color={content_block.question_options_text_color}
           question_headline_color={content_block.question_headline_color}
           question_options_bg_color={content_block.question_options_bg_color}
