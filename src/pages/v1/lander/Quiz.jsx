@@ -256,17 +256,17 @@ export default function Quiz({ content_block, number, PropagateLoader, storeRgba
     return eligible;
   };
 
-  const saveInitialData = () =>{
-    content_block.quiz_holder_questions.forEach((i)=>{
-      i.question_option.forEach((question)=> {
-        storeRgbaData(question.question_key_name ,question.question_option_default_value)
-      })
-    })
-  }
+  // const saveInitialData = () =>{
+  //   content_block.quiz_holder_questions.forEach((i)=>{
+  //     i.question_option.forEach((question)=> {
+  //       storeRgbaData(question.question_key_name ,question.question_option_default_value)
+  //     })
+  //   })
+  // }
 
-  useEffect(() => {
-    saveInitialData()
-  }, []);
+  // useEffect(() => {
+  //   saveInitialData()
+  // }, []);
 
   const questionObj = findQuestion(questionId);
 
