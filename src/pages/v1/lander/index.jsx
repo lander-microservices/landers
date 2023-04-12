@@ -3,7 +3,12 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import "./index.scss";
 
-function LanderParagraphSection({ number,shortCodeReplacer, content_block, getRichText }) {
+function LanderParagraphSection({
+  number,
+  shortCodeReplacer,
+  content_block,
+  getRichText,
+}) {
   return (
     <div
       className={`lander-paragraph ${content_block.lander_paragraph_text_color} ${content_block.lander_paragraph_bg_color}`}
@@ -50,9 +55,8 @@ export default function Lander({
   lander_show_quiz_section,
   shortCodeReplacer,
   storeRgbaData,
-  RINGBA_STORAGE_KEYS
+  RINGBA_STORAGE_KEYS,
 }) {
-
   const addColorToRichText = (html) => {
     const newStr = html.replaceAll(
       "<b>",

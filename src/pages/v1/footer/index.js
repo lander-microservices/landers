@@ -126,26 +126,28 @@ function AddEventId({ eventID, fbcFunc, tikTokEvent}) {
 
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.fbcFunc && !sessionStorage.getItem(viewContentKey)) {
+    // const interval = setInterval(() => {
+      if ( window.fbcFunc ) {
         window.fbcFunc("track", "PageView", { eventID: eventID });
         sessionStorage.setItem(viewContentKey, "true");
+        console.log("Facebook Pixel Event Triggered Page View");;
       }
 
+      console.log("Event", window.fbcFunc, sessionStorage.getItem(viewContentKey))
+
       if ( window.tikTokEvent &&
-        params.get("utm_source") === "tiktok" &&
-        !sessionStorage.getItem(viewContentKey2)
+        params.get("utm_source") === "tiktok"
       ) {
         window.tikTokEvent.track("ViewContent", {}, { eventID: eventID });
         sessionStorage.setItem(viewContentKey2, "true");
       }
-    }, 1000);
+    // }, 1000);
 
-    setTimeout(() => {
-      clearInterval(interval);
-    }, 20000);
+    // setTimeout(() => {
+    //   clearInterval(interval);
+    // }, 20000);
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, []);
   return <></>;
 }
