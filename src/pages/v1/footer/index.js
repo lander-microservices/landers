@@ -130,10 +130,7 @@ function AddEventId({ eventID, fbcFunc, tikTokEvent}) {
       if ( window.fbcFunc ) {
         window.fbcFunc("track", "PageView", { eventID: eventID });
         sessionStorage.setItem(viewContentKey, "true");
-        console.log("Facebook Pixel Event Triggered Page View");;
       }
-
-      console.log("Event", window.fbcFunc, sessionStorage.getItem(viewContentKey))
 
       if ( window.tikTokEvent &&
         params.get("utm_source") === "tiktok"

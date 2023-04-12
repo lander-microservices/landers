@@ -100,21 +100,21 @@ function DisQualified() {
   );
 }
 
-function Qualifyed({ number, creteria, getRichText }) {
+function Qualifyed({handlePixelEventTrigger, number, creteria, getRichText }) {
   return (
     <div className="qualifyed">
       <div className="greatnews">
         <h5>Congratulations!</h5>
         {
-          creteria.map((creteria_block)=>(
-            <div dangerouslySetInnerHTML={{ __html: getRichText(creteria_block.questions_qualification_congrats_message)}}></div>
+          creteria.map((creteria_block, index)=>(
+            <div key={index} dangerouslySetInnerHTML={{ __html: getRichText(creteria_block.questions_qualification_congrats_message)}}></div>
           ))
         }
         <p>
           Your spot is being held. To get started click the button below to
           speak to a expert.
         </p>
-        <a href={`tel:${number}`} className="quiz-navbar-btn">{number}</a>
+        <a onClick={()=> handlePixelEventTrigger("Contact")} href={`tel:${number}`} className="quiz-navbar-btn">{number}</a>
         <h3>
           Your spot is being held for <Timer />
         </h3>
@@ -174,7 +174,7 @@ const Timer = () => {
   return <span>{timer}</span>;
 };
 
-export default function Quiz({ getRichText, content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
+export default function Quiz({handlePixelEventTrigger, getRichText, content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -268,8 +268,6 @@ export default function Quiz({ getRichText, content_block, number, PropagateLoad
   //   saveInitialData()
   // }, []);
 
-  console.log("content_block.quiz_holder_eligibility", content_block.quiz_holder_eligibility)
-
   const questionObj = findQuestion(questionId);
 
   const submitBooleans = !showQualifyDisqualify && !isSubmitLoaderVisible;
@@ -311,7 +309,7 @@ export default function Quiz({ getRichText, content_block, number, PropagateLoad
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === true ? (
-        <Qualifyed getRichText={getRichText} number={number} creteria={content_block.quiz_holder_eligibility} />
+        <Qualifyed handlePixelEventTrigger={handlePixelEventTrigger} getRichText={getRichText} number={number} creteria={content_block.quiz_holder_eligibility} />
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === false ? (

@@ -55,6 +55,7 @@ export default function Lander({
   lander_show_quiz_section,
   shortCodeReplacer,
   storeRgbaData,
+  handlePixelEventTrigger,
   RINGBA_STORAGE_KEYS,
 }) {
   const addColorToRichText = (html) => {
@@ -185,6 +186,7 @@ export default function Lander({
                   <Quiz
                     content_block={i}
                     key={index}
+                    handlePixelEventTrigger={handlePixelEventTrigger}
                     getRichText={getRichText}
                     RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
                     storeRgbaData={storeRgbaData}
