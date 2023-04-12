@@ -185,6 +185,7 @@ export default function Lander({
                   <Quiz
                     content_block={i}
                     key={index}
+                    getRichText={getRichText}
                     RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
                     storeRgbaData={storeRgbaData}
                     PropagateLoader={PropagateLoader}

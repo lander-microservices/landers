@@ -100,16 +100,16 @@ function DisQualified() {
   );
 }
 
-function Qualifyed({ number }) {
+function Qualifyed({ number, creteria, getRichText }) {
   return (
     <div className="qualifyed">
       <div className="greatnews">
         <h5>Congratulations!</h5>
-        <p>
-          You Pre-Qualify for Advanced Premium Credits{" "}
-          <span className="red"> Advanced Premium Credits </span>
-          in your area up to $1400 a month
-        </p>
+        {
+          creteria.map((creteria_block)=>(
+            <div dangerouslySetInnerHTML={{ __html: getRichText(creteria_block.questions_qualification_congrats_message)}}></div>
+          ))
+        }
         <p>
           Your spot is being held. To get started click the button below to
           speak to a expert.
@@ -174,7 +174,7 @@ const Timer = () => {
   return <span>{timer}</span>;
 };
 
-export default function Quiz({ content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
+export default function Quiz({ getRichText, content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -268,6 +268,8 @@ export default function Quiz({ content_block, number, PropagateLoader, storeRgba
   //   saveInitialData()
   // }, []);
 
+  console.log("content_block.quiz_holder_eligibility", content_block.quiz_holder_eligibility)
+
   const questionObj = findQuestion(questionId);
 
   const submitBooleans = !showQualifyDisqualify && !isSubmitLoaderVisible;
@@ -309,7 +311,7 @@ export default function Quiz({ content_block, number, PropagateLoader, storeRgba
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === true ? (
-        <Qualifyed number={number} />
+        <Qualifyed getRichText={getRichText} number={number} creteria={content_block.quiz_holder_eligibility} />
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === false ? (
