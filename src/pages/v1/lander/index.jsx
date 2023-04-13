@@ -113,7 +113,7 @@ export default function Lander({
                   __html: shortCodeReplacer(addColorToRichText(
                     getRichText(
                       lander_hero_section.lander_hero_section_headline
-                    )),  { number, state: stateCityResponse.state, city: stateCityResponse}
+                    )),  { number, state: stateCityResponse.state, city: stateCityResponse.city}
                   ),
                 }}
               ></div>
