@@ -104,16 +104,11 @@ function Qualifyed({handlePixelEventTrigger, number, creteria, getRichText }) {
   return (
     <div className="qualifyed">
       <div className="greatnews">
-        <h5>Congratulations!</h5>
         {
           creteria.map((creteria_block, index)=>(
             <div key={index} dangerouslySetInnerHTML={{ __html: getRichText(creteria_block.questions_qualification_congrats_message)}}></div>
           ))
         }
-        <p>
-          Your spot is being held. To get started click the button below to
-          speak to a expert.
-        </p>
         <a onClick={()=> handlePixelEventTrigger("Contact")} href={`tel:${number}`} className="quiz-navbar-btn">{number}</a>
         <h3>
           Your spot is being held for <Timer />
