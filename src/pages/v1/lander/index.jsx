@@ -43,9 +43,7 @@ function LanderCtaSection({ content_block, getRichText }) {
 export default function Lander({
   lander_paragraph,
   lander_hero_section,
-  init,
-  callClickCb,
-  voluumUrl,
+  stateCityResponse,
   getRichText,
   lander_bg_color,
   number,
@@ -112,10 +110,10 @@ export default function Lander({
                   lander_hero_section.lander_hero_section_headline_color
                 }`}
                 dangerouslySetInnerHTML={{
-                  __html: addColorToRichText(
+                  __html: shortCodeReplacer(addColorToRichText(
                     getRichText(
                       lander_hero_section.lander_hero_section_headline
-                    )
+                    )),  { number, state: stateCityResponse.state, city: stateCityResponse}
                   ),
                 }}
               ></div>
