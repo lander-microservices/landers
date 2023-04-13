@@ -1,6 +1,5 @@
 import Quiz from "./Quiz";
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "./index.scss";
 
 function LanderParagraphSection({
