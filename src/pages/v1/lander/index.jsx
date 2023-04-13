@@ -104,7 +104,14 @@ export default function Lander({
           <div className="row">
             <div className="lander-hero-content col">
               <div
-                className={`heading text-align-center ${lander_hero_section.lander_hero_section_headline_color}`}
+                className={`heading ${
+                  lander_hero_section.lander_hero_section_headline_alignment &&
+                  lander_hero_section.lander_hero_section_headline_alignment.length
+                    ? lander_hero_section.lander_hero_section_headline_alignment
+                    : "text-align-center"
+                } ${
+                  lander_hero_section.lander_hero_section_headline_color
+                }`}
                 dangerouslySetInnerHTML={{
                   __html: addColorToRichText(
                     getRichText(
@@ -115,7 +122,15 @@ export default function Lander({
               ></div>
               {lander_hero_section.lander_hero_section_image &&
               lander_hero_section.lander_hero_section_image.filename ? (
-                <div className="headerimg">
+                <div
+                  className={`headerimg ${
+                    lander_hero_section.lander_hero_section_image_alignment &&
+                    lander_hero_section.lander_hero_section_image_alignment
+                      .length
+                      ? lander_hero_section.lander_hero_section_image_alignment
+                      : "text-align-center"
+                  }`}
+                >
                   <img
                     src={lander_hero_section.lander_hero_section_image.filename}
                     alt="HEADER_IMAGE"
