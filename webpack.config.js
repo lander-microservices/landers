@@ -81,7 +81,8 @@ module.exports = {
         "./V1Lander": "./src/pages/v1/lander",
         "./V1Footer": "./src/pages/v1/footer",
         "./V1Header": "./src/pages/v1/header",
-        "./V1Advertorial": "./src/pages/v1/advertorial"
+        "./V1Advertorial": "./src/pages/v1/advertorial",
+        "./V1FloatingCard": "./src/pages/v1/floating-card"
       },
       shared: {
         ...deps,
