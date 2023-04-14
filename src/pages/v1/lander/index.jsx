@@ -1,5 +1,5 @@
 import Quiz from "./Quiz";
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 
 function LanderParagraphSection({
@@ -103,17 +103,23 @@ export default function Lander({
               <div
                 className={`heading ${
                   lander_hero_section.lander_hero_section_headline_alignment &&
-                  lander_hero_section.lander_hero_section_headline_alignment.length
+                  lander_hero_section.lander_hero_section_headline_alignment
+                    .length
                     ? lander_hero_section.lander_hero_section_headline_alignment
                     : "text-align-center"
-                } ${
-                  lander_hero_section.lander_hero_section_headline_color
-                }`}
+                } ${lander_hero_section.lander_hero_section_headline_color}`}
                 dangerouslySetInnerHTML={{
-                  __html: shortCodeReplacer(addColorToRichText(
-                    getRichText(
-                      lander_hero_section.lander_hero_section_headline
-                    )),  { number, state: stateCityResponse.state, city: stateCityResponse.city}
+                  __html: shortCodeReplacer(
+                    addColorToRichText(
+                      getRichText(
+                        lander_hero_section.lander_hero_section_headline
+                      )
+                    ),
+                    {
+                      number,
+                      state: stateCityResponse.state,
+                      city: stateCityResponse.city,
+                    }
                   ),
                 }}
               ></div>
