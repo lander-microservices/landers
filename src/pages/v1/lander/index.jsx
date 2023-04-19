@@ -88,6 +88,8 @@ export default function Lander({
   };
 
   const { lander_paragraph_holder } = lander_paragraph;
+
+  console.log("lander_hero_section", lander_hero_section);
   return (
     <>
       <div
@@ -101,6 +103,14 @@ export default function Lander({
           <div className="row">
             <div className="lander-hero-content col">
               <div
+                style={{
+                  marginTop:
+                    lander_hero_section.lander_hero_section_headline_margin_top +
+                    "rem",
+                  marginBottom:
+                    lander_hero_section.lander_hero_section_headline_margin_bottom +
+                    "rem",
+                }}
                 className={`heading ${
                   lander_hero_section.lander_hero_section_headline_alignment &&
                   lander_hero_section.lander_hero_section_headline_alignment
@@ -123,6 +133,7 @@ export default function Lander({
                   ),
                 }}
               ></div>
+
               {lander_hero_section.lander_hero_section_image &&
               lander_hero_section.lander_hero_section_image.filename ? (
                 <div

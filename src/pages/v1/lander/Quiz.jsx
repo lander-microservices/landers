@@ -10,44 +10,43 @@ function QuestionTypeOptionRender({
   question_headline_color,
   question_options_bg_color,
   question_options_color,
-  storeRgbaData
+  storeRgbaData,
 }) {
-
-  const saveData = (key, value) =>{
+  const saveData = (key, value) => {
     storeRgbaData(key, value);
-  }
+  };
   return (
     <div className="question_container">
       {content_block.map((question_block, index) => (
-        <div className="questions" key={index  + "P"}>
+        <div className="questions" key={index + "P"}>
           <div className={`question_headline ${question_headline_color}`}>
-            <h2>
-              {question_block.question_option_headline}
-            </h2>
+            <h2>{question_block.question_option_headline}</h2>
           </div>
           <div className="question_holder">
             <div className="question_options">
               {question_block.question_options_holder.map((options, index) => (
-                  <button
-                    key={index + "I"}
-                    onClick={() =>{
-                      addAnswer(options.question_option_value)
-                      saveData(question_block.question_key_name, options.question_option_value)
-                    } 
-                  }
-                    className={`${
-                      question_options_bg_color &&
-                      question_options_bg_color.length
-                        ? question_options_bg_color
-                        : "bg-red"
-                    } ${
-                      question_options_color && question_options_color.length
-                        ? question_options_color
-                        : "white"
-                    }`}
-                  >
-                    <p>{options.question_option_name}</p>
-                  </button>
+                <button
+                  key={index + "I"}
+                  onClick={() => {
+                    addAnswer(options.question_option_value);
+                    saveData(
+                      question_block.question_key_name,
+                      options.question_option_value
+                    );
+                  }}
+                  className={`${
+                    question_options_bg_color &&
+                    question_options_bg_color.length
+                      ? question_options_bg_color
+                      : "bg-red"
+                  } ${
+                    question_options_color && question_options_color.length
+                      ? question_options_color
+                      : "white"
+                  }`}
+                >
+                  <p>{options.question_option_name}</p>
+                </button>
               ))}
             </div>
           </div>
@@ -100,16 +99,27 @@ function DisQualified() {
   );
 }
 
-function Qualifyed({handlePixelEventTrigger, number, creteria, getRichText }) {
+function Qualifyed({ handlePixelEventTrigger, number, creteria, getRichText }) {
   return (
     <div className="qualifyed">
       <div className="greatnews">
-        {
-          creteria.map((creteria_block, index)=>(
-            <div key={index} dangerouslySetInnerHTML={{ __html: getRichText(creteria_block.questions_qualification_congrats_message)}}></div>
-          ))
-        }
-        <a onClick={()=> handlePixelEventTrigger("Contact")} href={`tel:${number}`} className="quiz-navbar-btn">{number}</a>
+        {creteria.map((creteria_block, index) => (
+          <div
+            key={index}
+            dangerouslySetInnerHTML={{
+              __html: getRichText(
+                creteria_block.questions_qualification_congrats_message
+              ),
+            }}
+          ></div>
+        ))}
+        <a
+          onClick={() => handlePixelEventTrigger("Contact")}
+          href={`tel:${number}`}
+          className="quiz-navbar-btn"
+        >
+          {number}
+        </a>
         <h3>
           Your spot is being held for <Timer />
         </h3>
@@ -169,7 +179,15 @@ const Timer = () => {
   return <span>{timer}</span>;
 };
 
-export default function Quiz({handlePixelEventTrigger, getRichText, content_block, number, PropagateLoader, storeRgbaData, RINGBA_STORAGE_KEYS }) {
+export default function Quiz({
+  handlePixelEventTrigger,
+  getRichText,
+  content_block,
+  number,
+  PropagateLoader,
+  storeRgbaData,
+  RINGBA_STORAGE_KEYS,
+}) {
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);
@@ -267,7 +285,13 @@ export default function Quiz({handlePixelEventTrigger, getRichText, content_bloc
 
   const submitBooleans = !showQualifyDisqualify && !isSubmitLoaderVisible;
   return (
-    <div className="quiz col">
+    <div
+      className="quiz col"
+      style={{
+        marginBottom: content_block.quiz_holder_margin_bottom + "rem",
+        marginTop: content_block.quiz_holder_margin_top + "rem",
+      }}
+    >
       {submitBooleans &&
       questionObj &&
       content_block.quiz_holder_section_zipcode_question_number !==
@@ -304,7 +328,12 @@ export default function Quiz({handlePixelEventTrigger, getRichText, content_bloc
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === true ? (
-        <Qualifyed handlePixelEventTrigger={handlePixelEventTrigger} getRichText={getRichText} number={number} creteria={content_block.quiz_holder_eligibility} />
+        <Qualifyed
+          handlePixelEventTrigger={handlePixelEventTrigger}
+          getRichText={getRichText}
+          number={number}
+          creteria={content_block.quiz_holder_eligibility}
+        />
       ) : undefined}
 
       {showQualifyDisqualify && checkEligibility() === false ? (
