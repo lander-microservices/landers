@@ -288,8 +288,8 @@ export default function Quiz({
     <div
       className="quiz col"
       style={{
-        marginBottom: content_block.quiz_holder_margin_bottom + "rem",
-        marginTop: content_block.quiz_holder_margin_top + "rem",
+        paddingBottom: content_block.quiz_holder_margin_bottom + "rem",
+        paddingTop: content_block.quiz_holder_margin_top + "rem",
       }}
     >
       {submitBooleans &&
