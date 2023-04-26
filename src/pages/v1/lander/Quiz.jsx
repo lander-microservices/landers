@@ -14,6 +14,7 @@ function QuestionTypeOptionRender({
 }) {
   const saveData = (key, value) => {
     storeRgbaData(key, value);
+    localStorage.setItem(key, value)
   };
   return (
     <div className="question_container">
