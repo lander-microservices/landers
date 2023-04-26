@@ -89,7 +89,6 @@ export default function Lander({
 
   const { lander_paragraph_holder } = lander_paragraph;
 
-  console.log("lander_hero_section", lander_hero_section);
   return (
     <>
       <div
