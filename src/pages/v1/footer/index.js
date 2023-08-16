@@ -33,6 +33,7 @@ export default function Footer({
   tikTokEvent,
   fbcFunc,
   lander_logo_text,
+  logo_subheadline
 }) {
   const {
     lander_footer_copyright_url,
@@ -81,7 +82,7 @@ export default function Footer({
                   >
                     {lander_logo_text}
                   </h1>
-                  <h2 className="blue">a non-government aca site</h2>
+                  <h2 className="blue">{logo_subheadline}</h2>
                 </div>
               </div>
               <hr className="horizontal" />
@@ -117,27 +118,24 @@ export default function Footer({
   );
 }
 
-function AddEventId({ eventID, fbcFunc, tikTokEvent}) {
+function AddEventId({ eventID, fbcFunc, tikTokEvent }) {
   const viewContentKey = "PageView";
-  const viewContentKey2= "PageView2";
+  const viewContentKey2 = "PageView2";
 
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
 
-
   useEffect(() => {
     // const interval = setInterval(() => {
-      if ( window.fbcFunc ) {
-        window.fbcFunc("track", "PageView", { eventID: eventID });
-        sessionStorage.setItem(viewContentKey, "true");
-      }
+    if (window.fbcFunc) {
+      window.fbcFunc("track", "PageView", { eventID: eventID });
+      sessionStorage.setItem(viewContentKey, "true");
+    }
 
-      if ( window.tikTokEvent &&
-        params.get("utm_source") === "tiktok"
-      ) {
-        window.tikTokEvent.track("ViewContent", {}, { eventID: eventID });
-        sessionStorage.setItem(viewContentKey2, "true");
-      }
+    if (window.tikTokEvent && params.get("utm_source") === "tiktok") {
+      window.tikTokEvent.track("ViewContent", {}, { eventID: eventID });
+      sessionStorage.setItem(viewContentKey2, "true");
+    }
     // }, 1000);
 
     // setTimeout(() => {
