@@ -33,7 +33,7 @@ export default function Footer({
   tikTokEvent,
   fbcFunc,
   lander_logo_text,
-  logo_subheadline
+  logo_subheadline,
 }) {
   const {
     lander_footer_copyright_url,
@@ -82,7 +82,15 @@ export default function Footer({
                   >
                     {lander_logo_text}
                   </h1>
-                  <h2 className="blue">{logo_subheadline}</h2>
+                  <h2
+                    className={`${
+                      lander_logo_text_color && lander_logo_text_color.length
+                        ? lander_logo_text_color
+                        : "blue"
+                    }`}
+                  >
+                    {logo_subheadline}
+                  </h2>
                 </div>
               </div>
               <hr className="horizontal" />
