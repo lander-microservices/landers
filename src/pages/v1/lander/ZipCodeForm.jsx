@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import * as yup from "yup";
 
+import { useRingba } from "wecall-config-lib";
+
 const initialValues = {
   zip: "",
 };
@@ -24,8 +26,9 @@ export default function ZipCodeForm({
   question_headline_color,
   question_options_bg_color,
   RINGBA_STORAGE_KEYS,
-  storeRgbaData
+
 }) {
+  const { storeRgbaData } = useRingba();
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState({});
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import ZipCodeForm from "./ZipCodeForm";
 import "./quiz.scss";
+import { useRingba } from "wecall-config-lib";
 
 //  option question
 function QuestionTypeOptionRender({
@@ -10,11 +11,11 @@ function QuestionTypeOptionRender({
   question_headline_color,
   question_options_bg_color,
   question_options_color,
-  storeRgbaData,
 }) {
+  const { storeRgbaData } = useRingba();
   const saveData = (key, value) => {
     storeRgbaData(key, value);
-    localStorage.setItem(key, value)
+    localStorage.setItem(key, value);
   };
   return (
     <div className="question_container">
@@ -101,6 +102,7 @@ function DisQualified() {
 }
 
 function Qualifyed({ handlePixelEventTrigger, number, creteria, getRichText }) {
+  const { storeRgbaData, callTriggered } = useRingba();
   return (
     <div className="qualifyed">
       <div className="greatnews">
@@ -115,7 +117,10 @@ function Qualifyed({ handlePixelEventTrigger, number, creteria, getRichText }) {
           ></div>
         ))}
         <a
-          onClick={() => handlePixelEventTrigger("Contact")}
+          onClick={() => {
+            callTriggered();
+            handlePixelEventTrigger("Contact");
+          }}
           href={`tel:${number}`}
           className="quiz-navbar-btn"
         >
@@ -186,9 +191,9 @@ export default function Quiz({
   content_block,
   number,
   PropagateLoader,
-  storeRgbaData,
   RINGBA_STORAGE_KEYS,
 }) {
+  const { storeRgbaData } = useRingba();
   const [questionId, setQuestionId] = useState("1");
   const [answers, setAnswers] = useState([]);
   const [isSubmitLoaderVisible, setSubmitLoaderVisible] = useState(false);

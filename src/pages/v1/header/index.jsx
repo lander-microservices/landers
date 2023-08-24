@@ -1,6 +1,7 @@
 import React from "react";
 import PHONE_IMAGE from "./phone.svg";
 import "./index.scss";
+import { useRingba } from "wecall-config-lib";
 
 export default function Header({
   tollFreeVisible,
@@ -14,9 +15,17 @@ export default function Header({
     lander_logo_text_color,
     lander_nav_toll_free_color,
   } = content_block;
+
+  const { callTriggered } = useRingba();
   return (
     <>
-      <div className={`navbar blue ${lander_nav_bg_color && lander_nav_bg_color.length ? lander_nav_bg_color : 'bg-white'}`}>
+      <div
+        className={`navbar blue ${
+          lander_nav_bg_color && lander_nav_bg_color.length
+            ? lander_nav_bg_color
+            : "bg-white"
+        }`}
+      >
         <nav>
           <div className="logoholder">
             <div className="logo">
@@ -25,8 +34,24 @@ export default function Header({
                 alt="logo"
               />
               <div className="sitename">
-                <h1 className={`${lander_logo_text_color && lander_logo_text_color.length ? lander_logo_text_color : 'blue'}`}>{headerTitle}</h1>
-                <h2 className={`${lander_logo_text_color && lander_logo_text_color.length ? lander_logo_text_color : 'blue'}`}>{content_block.lander_logo_subheadline}</h2>
+                <h1
+                  className={`${
+                    lander_logo_text_color && lander_logo_text_color.length
+                      ? lander_logo_text_color
+                      : "blue"
+                  }`}
+                >
+                  {headerTitle}
+                </h1>
+                <h2
+                  className={`${
+                    lander_logo_text_color && lander_logo_text_color.length
+                      ? lander_logo_text_color
+                      : "blue"
+                  }`}
+                >
+                  {content_block.lander_logo_subheadline}
+                </h2>
               </div>
             </div>
           </div>
@@ -34,7 +59,9 @@ export default function Header({
             <a
               href={`tel:${number}`}
               className="callnow blue navbar-btn"
-              onClick={()=> handlePixelEventTrigger('Contact')}
+              onClick={() =>{
+                callTriggered();
+                handlePixelEventTrigger("Contact")}}
               id="lander_call"
             >
               <div className="phone-icon">
@@ -46,7 +73,9 @@ export default function Header({
                 </div>
                 <div className="toll-free-number-holder">
                   <div className="available-blinker bg-lightgreen"></div>
-                  <div className={`toll-free-number ${lander_nav_toll_free_color}`}>
+                  <div
+                    className={`toll-free-number ${lander_nav_toll_free_color}`}
+                  >
                     <span id="font-end-contact-number" className="font-bold">
                       <span className={`display-number`}>{number}</span>
                     </span>
