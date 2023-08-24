@@ -103,6 +103,10 @@ function DisQualified() {
 
 function Qualifyed({ handlePixelEventTrigger, number, creteria, getRichText }) {
   const { storeRgbaData, callTriggered } = useRingba();
+  
+  useEffect(()=>{
+    callTriggered();
+  },[])
   return (
     <div className="qualifyed">
       <div className="greatnews">
